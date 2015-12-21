@@ -3,6 +3,8 @@
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.12.1.
 
+Weather data retrieved using [Yahoo Weather API](https://developer.yahoo.com/weather/archive.html). An [angularJS](https://angularjs.org/) webapp scaffolded using [Yeoman](https://yeoman.io/) with material design elements built with support from the [Angular Material](https://material.angularjs.org/latest/) and [Swiper - Mobile Touch Slider](http://www.idangero.us/?content=article&id=45#.VndyXJODGko).
+
 ## Build & development
 
 Run `grunt` for building and `grunt serve` for preview.
