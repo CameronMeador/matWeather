@@ -24,3 +24,7 @@ If you want to just add in the file link in the index.html each time before serv
 ##Bower and npm
 
 Be sure to run `bower install` and `npm install` before running `grunt serve` the first time.
+
+##Mobile Device Issues
+
+The swipe features enabled by [Swiper](http://www.idangero.us/?content=article&id=45#.VndyXJODGko) operate ideally on mobile browser emulators, and Chrome Web Inspector. However, for some reason the containers are shrunken in mobile Chrome and iOS browsers, as well as Safari.
