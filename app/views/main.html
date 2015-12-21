@@ -1,71 +1,62 @@
+<!--PARTIAL VIEW FOR WEATHER CARDS AND SEARCH BAR JUMBO-->
 <body ng-controller="weatherCtrl as weather">
-  <!-- Swiper JS -->
-    <script src="../dist/js/swiper.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script>
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        slidesPerView: 5,
-        paginationClickable: false,
-        spaceBetween: 0
-    });
-    </script>
 <div class="jumbotron headjum">
-  <h1>'Allo, 'Allo!</h1>
   <p class="lead">
     <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
   </p>
+<!--SEARCH BAR: enter-search is defined to call findWeather(zip) upon an 'Enter' keypress.-->
   <form>
-        <div id="custom-search-input">
-                              <div class="input-group col-md-12">
-                                  <input type="number" ng-model="zip" class="  search-query form-control" placeholder="Search zip..." />
-                                  <span class="input-group-btn">
-                                      <button class="btn btn-danger" type="button" ng-click="findWeather(zip)">
-                                          <span class=" glyphicon glyphicon-search"></span>
-                                      </button>
-                                  </span>
-                              </div>
-                          </div>
+    <div id="custom-search-input">
+      <div class="input-group col-md-12">
+        <center><input class="search" type="text" ng-model="zip" class="search-query form-control" placeholder="Search zip..." / enter-search="findWeather(zip)"></center>
+          <button class="btn btn-danger" type="button" ng-click="findWeather(zip)">
+            <span class=" glyphicon glyphicon-search"></span>
+          </button>
+        </div>
+      </div>
   </form><br>
 </div>
-<md-content class="md-padding" layout="row" layout-wrap="" layout-align="left start">
+
+<!--MATERIAL DESIGN WEATHER CARD CSS-->
+<md-content class="md-padding" layout="row" layout-wrap="" layout-align="">
+<!--CARD CONTAINER WITH SWIPER CLASSES-->
 <div class="container-fluid">
-<div class="swiper-container-fluid">
-  <div class="swiper-wrapper">
-  <md-card>
-    <md-card-content>
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-headline">{{ place.location.city }}</span>
-        <span class="md-subhead">{{ place.item.condition.text }}<br><strong><h1>{{ place.item.condition.temp }}&deg;</h1></strong> </span>
-      </md-card-title-text>
-      <md-card-title-media>
-      </md-card-title-media>
-    </md-card-title>
-    <img class="forecast" src="/images/{{place.item.condition.code}}.png" width="130px"/>
-  </md-card-content>
-    <md-card-actions layout="row" layout-align="end center">
-    </md-card-actions>
-  </md-card>
-<md-card ng-repeat="forecast in place.item.forecast">
-  <md-card-content>
-  <md-card-title>
-    <md-card-title-text>
-      <span class="md-headline">{{ forecast.date }}</span>
-      <span class="md-subhead">{{ forecast.text }}<br><strong><h2>High: {{ forecast.high }}&deg; Low: {{forecast.low}}&deg;</h2></strong> </span>
-    </md-card-title-text>
-    <md-card-title-media>
-    </md-card-title-media>
-  </md-card-title>
-  <img class="forecast" src="/images/{{forecast.code}}.png" width="130px"/>
-</md-card-content>
-  <md-card-actions layout="row" layout-align="end center">
-  </md-card-actions>
-</md-card>
-</div>
-</div>
+  <div class="swiper-container-fluid">
+    <div class="swiper-wrapper">
+<!--FIRST WEATHER CARD: DISPLAYS LOCATION AND CURRENT COND.-->
+      <md-card>
+        <md-card-content>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">{{ place.location.city }}</span>
+              <span class="md-subhead">{{ place.item.condition.text }}<br><strong><h1>{{ place.item.condition.temp }}&deg;</h1></strong> </span>
+            </md-card-title-text>
+            <md-card-title-media>
+            </md-card-title-media>
+          </md-card-title>
+          <img class="forecast" src="/images/{{place.item.condition.code}}.png" width="130px"/>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+        </md-card-actions>
+      </md-card>
+<!--FORECAST CARDS USING NG-REPEAT-->
+      <md-card ng-repeat="forecast in place.item.forecast">
+        <md-card-content>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">{{ forecast.date }}</span>
+              <span class="md-subhead">{{ forecast.text }}<br><strong><h2>High: {{ forecast.high }}&deg; Low: {{forecast.low}}&deg;</h2></strong> </span>
+            </md-card-title-text>
+            <md-card-title-media>
+            </md-card-title-media>
+          </md-card-title>
+          <img class="forecast" src="/images/{{forecast.code}}.png" width="130px"/>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+        </md-card-actions>
+      </md-card>
+    </div>
+  </div>
 </div>
 
 </body>

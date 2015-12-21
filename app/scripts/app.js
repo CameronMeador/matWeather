@@ -5,7 +5,8 @@
  * @description
  * # matWeatherApp
  *
- * Main module of the application.
+ * AngualrJS for matWeather. Includes factory method to pull weather data and pass along to the controller for main.html.
+ * Added dependecies include 'ngMaterial' for md-card elements.
  */
 var app = angular
   .module('matWeatherApp', [
@@ -31,6 +32,7 @@ var app = angular
         redirectTo: '/'
       });
   });
+  /*factory method to pull Yahoo weather data*/
   app.factory('weatherService', ['$http', '$q', function ($http, $q){
     function getWeather (zip) {
         var deferred = $q.defer();
@@ -48,6 +50,7 @@ var app = angular
         getWeather: getWeather
       };
     }]);
+    /*weather controller passes current condition and forecast data along*/
     app.controller('weatherCtrl', ['$scope', 'weatherService', function($scope, weatherService) {
       this.isOpen=false;
       function fetchWeather(zip) {
@@ -61,4 +64,17 @@ var app = angular
             $scope.place = '';
             fetchWeather(zip);
           };
-        }]);
+    }]);
+    /*enterSearch function calls findWeather(zip) with an appropriate zip upon a 'Return' keypress*/
+    app.directive('enterSearch', function(){
+      return function(scope, element, attrs){
+        element.bind('keydown keypress', function(event){
+          if(event.which===13) {
+            scope.$apply(function(){
+              scope.$eval(attrs.enterSearch);
+            });
+            event.preventDefault();
+          }
+        });
+      };
+    });

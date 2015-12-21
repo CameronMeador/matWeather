@@ -24,7 +24,19 @@
 
  <!-- Angular Material Library -->
  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
-    <!-- endbuild -->
+ <!-- Swiper JS -->
+ <script src="bower_components/Swiper/dist/js/swiper.min.js"></script>
+
+ <!-- Initialize Swiper -->
+ <script>
+     var swiper = new Swiper('.swiper-container', {
+         pagination: '.swiper-pagination',
+         slidesPerView: 5,
+         paginationClickable: false,
+         spaceBetween: 0
+     });
+ </script>
+<!-- endbuild -->
   </head>
   <body ng-app="matWeatherApp">
     <!-- Navigation -->
@@ -53,6 +65,8 @@
                     <li>
                         <a class="page-scroll" href="#Weather">Weather</a>
                     </li>
+                    <li>
+                        <a class="page-scroll" href="#About">About</a>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -62,8 +76,9 @@
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-heading">It's Nice To Meet You</div>
-                <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+                <div class="intro-heading"></div>
+                <center><input class="search" type="text" ng-model="zip" class="search-query form-control" placeholder="Search zip..." / enter-search="findWeather(zip)"></center>
+                <a href="#services" class="page-scroll btn btn-xl"></a>
             </div>
         </div>
     </header>
